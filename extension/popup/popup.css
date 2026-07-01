@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --pm-bg: #FFFFFF;
+  --pm-surface: #F7F7F7;
+  --pm-hover: #F0F0F0;
+  --pm-border: #E5E5E5;
+  --pm-text: #000000;
+  --pm-text-secondary: #666666;
+  --pm-text-muted: #999999;
+  --pm-must: #DC2626;
+  --pm-should: #D97706;
+  --pm-nit: #78716C;
+  --pm-font-heading: 'Syne', sans-serif;
+  --pm-font-body: 'Urbanist', sans-serif;
+  --pm-radius: 12px;
+  --pm-radius-sm: 8px;
+  --pm-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 352px;
+  max-height: 600px;
+  overflow-y: auto;
+  font-family: var(--pm-font-body);
+  font-size: 13px;
+  color: var(--pm-text);
+  background: var(--pm-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+#pagemark-root {
+  display: flex;
+  flex-direction: column;
+}
+
+#pagemark-header {
+  background: var(--pm-bg);
+  padding: 14px 20px;
+  display: flex;
+  border-bottom: 1px solid var(--pm-border);
+}
+
+#pagemark-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#pagemark-logo {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+#pagemark-header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+#pagemark-title {
+  font-family: var(--pm-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--pm-text);
+  letter-spacing: -0.02em;
+}
+
+#pagemark-subtitle {
+  font-family: var(--pm-font-body);
+  font-size: 12px;
+  color: var(--pm-text-secondary);
+  font-weight: 400;
+}
+
+section {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--pm-border);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+#pagemark-project-root {
+  background: var(--pm-bg);
+}
+
+#pagemark-project-root-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-pr-label {
+  font-family: var(--pm-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.pm-pr-value {
+  font-size: 12px;
+  color: var(--pm-text);
+  word-break: break-all;
+  flex: 1;
+  font-family: 'SF Mono', 'Cascadia Code', monospace;
+}
+
+.pm-pr-warn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--pm-must);
+  margin-top: 6px;
+}
+
+.pm-pr-warn button {
+  background: none;
+  border: none;
+  color: var(--pm-must);
+  font-family: var(--pm-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.pm-pr-warn svg {
+  flex-shrink: 0;
+}
+
+.pagemark-pr-ok { color: #16A34A; }
+.pagemark-pr-missing { color: #DC2626; }
+
+.pm-pr-input-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.pm-pr-input-row input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm);
+  font-size: 12px;
+  font-family: var(--pm-font-body);
+  color: var(--pm-text);
+  background: var(--pm-bg);
+}
+
+.pm-pr-input-row input:focus {
+  outline: none;
+  border-color: var(--pm-text);
+}
+
+.pm-pr-input-row button {
+  padding: 6px 12px;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface);
+  color: var(--pm-text);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--pm-font-body);
+  transition: background 0.15s ease;
+}
+
+.pm-pr-input-row button:hover {
+  background: var(--pm-hover);
+}
+
+#pagemark-status {
+  background: var(--pm-bg);
+}
+
+#pagemark-url-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+#pagemark-url-label {
+  font-family: var(--pm-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+#pagemark-url {
+  color: var(--pm-text-secondary);
+  font-size: 12px;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+#pagemark-active-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pagemark-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background 0.15s ease;
+}
+
+.pagemark-dot-active {
+  background: #16A34A;
+}
+
+.pagemark-dot-inactive {
+  background: var(--pm-border);
+}
+
+#pagemark-localhost-msg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--pm-border);
+  background: var(--pm-surface);
+  color: var(--pm-must);
+  font-size: 12px;
+}
+
+#pagemark-localhost-msg svg {
+  flex-shrink: 0;
+}
+
+#pagemark-actions {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.pagemark-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--pm-radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  font-family: var(--pm-font-body);
+  border: 1px solid transparent;
+}
+
+.pagemark-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pagemark-btn-primary {
+  background: var(--pm-text);
+  color: var(--pm-bg);
+  border-color: var(--pm-text);
+}
+
+.pagemark-btn-primary:hover:not(:disabled) {
+  background: #333333;
+  border-color: #333333;
+}
+
+.pagemark-btn-secondary {
+  background: var(--pm-surface);
+  color: var(--pm-text);
+  border-color: var(--pm-border);
+}
+
+.pagemark-btn-secondary:hover:not(:disabled) {
+  background: var(--pm-hover);
+}
+
+.pagemark-btn-ghost {
+  background: var(--pm-bg);
+  color: var(--pm-text-secondary);
+  border-color: var(--pm-border);
+}
+
+.pagemark-btn-ghost:hover:not(:disabled) {
+  background: var(--pm-hover);
+  color: var(--pm-text);
+}
+
+#pagemark-summary {
+  background: var(--pm-bg);
+}
+
+#pagemark-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+#pagemark-summary-header span {
+  font-family: var(--pm-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+#pagemark-summary-header svg {
+  color: var(--pm-text-muted);
+}
+
+#pagemark-summary-counts {
+  display: flex;
+  gap: 6px;
+}
+
+.pagemark-severity-badge {
+  padding: 4px 10px;
+  border-radius: var(--pm-radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+}
+
+.pagemark-severity-must {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.pagemark-severity-should {
+  background: #FFFBEB;
+  color: #D97706;
+}
+
+.pagemark-severity-nit {
+  background: var(--pm-surface);
+  color: var(--pm-text-muted);
+}
+
+#pagemark-quick-actions {
+  display: flex;
+  gap: 8px;
+}
+
+#pagemark-quick-actions .pagemark-btn {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+#pagemark-footer {
+  padding: 10px 20px;
+  font-size: 11px;
+  color: var(--pm-text-muted);
+  text-align: center;
+  border-top: 1px solid var(--pm-border);
+}
+
+.pagemark-hidden {
+  display: none !important;
+}

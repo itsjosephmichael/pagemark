@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PageMark Options</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+    :root {
+      --pm-dark: #000000;
+      --pm-blue: #14213D;
+      --pm-rust: #C2C4C3;
+      --pm-orange: #FCA311;
+      --pm-white: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 14px; color: var(--pm-blue);
+      background: var(--pm-rust); padding: 40px 32px;
+      max-width: 640px; margin: 0 auto;
+    }
+    .header { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+    .header .title { font-weight: 700; font-size: 20px; letter-spacing: -0.3px; color: var(--pm-blue); font-family: 'Syne', sans-serif; }
+    .header .subtitle { font-size: 13px; color: var(--pm-blue); opacity: 0.6; }
+
+    .card {
+      background: var(--pm-white); border: 1px solid var(--pm-rust);
+      border-radius: 12px; padding: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .field { margin-bottom: 20px; }
+    .field:last-child { margin-bottom: 0; }
+    label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; color: var(--pm-blue); }
+    .help { font-size: 12px; color: var(--pm-blue); opacity: 0.5; margin-top: 6px; }
+    input[type="text"], input[type="number"] {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--pm-rust);
+      border-radius: 8px; font-size: 14px; font-family: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    input:focus { outline: none; border-color: var(--pm-orange); box-shadow: 0 0 0 3px rgba(252,163,17,0.15); }
+    textarea {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--pm-rust);
+      border-radius: 8px; font-size: 13px; font-family: 'SF Mono', 'Cascadia Code', monospace;
+      resize: vertical; min-height: 100px; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    textarea:focus { outline: none; border-color: var(--pm-orange); box-shadow: 0 0 0 3px rgba(252,163,17,0.15); }
+    .actions { display: flex; gap: 10px; margin-top: 24px; }
+    .btn {
+      padding: 10px 24px; border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .btn-primary { background: var(--pm-blue); color: var(--pm-white); }
+    .btn-primary:hover { background: #1a2d4e; }
+    .btn-danger { background: var(--pm-white); color: #DC2626; border: 1.5px solid #FEE2E2; }
+    .btn-danger:hover { background: #FEF2F2; }
+    #toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+      background: var(--pm-blue); color: var(--pm-white); padding: 10px 20px;
+      border-radius: 10px; font-size: 13px; font-weight: 500;
+      opacity: 0; transition: opacity 0.3s; pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="title">PageMark</span>
+    <span class="subtitle">Extension Settings</span>
+  </div>
+
+  <div class="card">
+    <div class="field">
+      <label for="cacheTTL">Source Map Cache TTL (seconds)</label>
+      <input type="number" id="cacheTTL" min="0" step="1" value="300">
+      <div class="help">How long to cache parsed sourcemaps (default: 300)</div>
+    </div>
+
+    <div class="field">
+      <label for="ignoredClasses">Ignored CSS Classes</label>
+      <textarea id="ignoredClasses" rows="6" placeholder="flex, mt-, mb-"></textarea>
+      <div class="help">Comma-separated CSS class patterns to ignore when matching elements</div>
+    </div>
+
+    <div class="actions">
+      <button id="resetBtn" class="btn btn-danger">Reset All</button>
+      <button id="saveBtn" class="btn btn-primary">Save Settings</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <script src="options.js"></script>
+</body>
+</html>

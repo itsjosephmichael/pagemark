@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "PageMark",
+  "version": "1.0.0",
+  "description": "Annotate localhost webpages and generate structured prompts for AI coding agents.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["http://localhost/*", "http://127.0.0.1/*", "file:///*"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [{
+    "matches": ["http://localhost/*", "http://127.0.0.1/*", "file:///*"],
+    "js": [
+      "lib/utils.js",
+      "lib/selector.js",
+      "lib/file-detector.js",
+      "lib/keyword-suggester.js",
+      "lib/prompt-generator.js",
+      "content/content.js",
+      "content/toolbar.js",
+      "content/comment-popup.js"
+    ],
+    "css": ["content/overlay.css"]
+  }],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

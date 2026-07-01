@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PageMark</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="pagemark-root">
+
+    <header id="pagemark-header">
+      <div id="pagemark-header-left">
+        <img id="pagemark-logo" src="../assets/pagemark-logo-transparent-black.png" alt="PageMark">
+        <div id="pagemark-header-titles">
+          <span id="pagemark-title">PageMark</span>
+          <span id="pagemark-subtitle">Annotate. Generate. Build.</span>
+        </div>
+      </div>
+    </header>
+
+    <section id="pagemark-project-root">
+      <div id="pagemark-project-root-row">
+        <span class="pm-pr-label">Root</span>
+        <span id="pm-pr-value" class="pm-pr-value">—</span>
+      </div>
+      <div id="pm-pr-warn" class="pm-pr-warn pagemark-hidden">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+        <span>No project root set</span>
+        <button id="pm-pr-set-btn">Set...</button>
+      </div>
+      <div id="pm-pr-input-row" class="pm-pr-input-row pagemark-hidden">
+        <input type="text" id="pm-pr-input" placeholder="C:\projects\my-app">
+        <button id="pm-pr-save-btn">Set</button>
+      </div>
+    </section>
+
+    <section id="pagemark-status">
+      <div id="pagemark-url-row">
+        <span id="pagemark-url-label">Page</span>
+        <span id="pagemark-url" title="">—</span>
+      </div>
+      <div id="pagemark-active-row">
+        <span id="pagemark-status-dot" class="pagemark-dot pagemark-dot-inactive"></span>
+        <span id="pagemark-status-text">Checking...</span>
+      </div>
+    </section>
+
+    <div id="pagemark-localhost-msg" class="pagemark-hidden">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      </svg>
+      <span>PageMark only works on localhost pages</span>
+    </div>
+
+    <section id="pagemark-actions">
+      <button id="pagemark-toggle-btn" class="pagemark-btn pagemark-btn-primary" disabled>—</button>
+    </section>
+
+    <section id="pagemark-summary" class="pagemark-hidden">
+      <div id="pagemark-summary-header">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Annotations</span>
+      </div>
+      <div id="pagemark-summary-counts">
+        <span class="pagemark-severity-badge pagemark-severity-must">Must: 0</span>
+        <span class="pagemark-severity-badge pagemark-severity-should">Should: 0</span>
+        <span class="pagemark-severity-badge pagemark-severity-nit">Nit: 0</span>
+      </div>
+    </section>
+
+    <section id="pagemark-quick-actions">
+      <button id="pagemark-settings-btn" class="pagemark-btn pagemark-btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </button>
+    </section>
+
+    <footer id="pagemark-footer">PageMark v1.0.0</footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
